@@ -21,7 +21,7 @@ import Pages500 from "../pages/Utility/pages-500";
 
 import RecursosMto from "../pages/RecursosMto/RecursosMto";
 import RolesMto from "../pages/RolesMto/RolesMto";
-i
+
 import { AdministracionCurriculum } from "../pages/AdministracionCurriculum/AdministracionCurriculum";
 import OfertasAplicaciones from "../pages/OfertasAplicaciones/OfertasAplicaciones";
 
