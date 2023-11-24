@@ -15,6 +15,7 @@ import paginationFactory from 'react-bootstrap-table2-paginator';
 import { GET_OFERTAS, POST_OFERTAS, GET_APLICACIONES_OFERTA } from '../../helpers/ofertas_aplicaciones/helpers';
 import useApiHelper from '../../hooks/useApiHelper';
 import Swal from 'sweetalert2';
+import { Input } from 'reactstrap';
 import './css/styles.css'
 
 export const OfertasAplicaciones = () => {
@@ -31,6 +32,8 @@ export const OfertasAplicaciones = () => {
     const [filasAplicaciones, setFilasAplicaciones] = useState([]);
     const [loadingAplicaciones, setLoadingAplicaciones] = useState(false);
     const {post,get} = useApiHelper();
+
+    const [searchTerm, setSearchTerm] = useState("");
 
     const columns = useMemo(
         ()=>[
@@ -163,14 +166,11 @@ export const OfertasAplicaciones = () => {
         ]
     )
 
-    useEffect(()=>{
-
-        console.log("OFERTA: ",ofertas);
-        if(ofertas != null){
-            _formarFilasOfertas()
+    useEffect(() => {
+        if (ofertas != null) {
+          _formarFilasOfertas();
         }
-
-    },[ofertas]);
+      }, [ofertas, searchTerm]);
 
     useEffect(()=>{
         console.log("aplicaciones: ",aplicaciones);
@@ -228,11 +228,12 @@ export const OfertasAplicaciones = () => {
         }
     }
 
-    const _formarFilasOfertas=()=>{
-        const n_filas=[];
-        let n_fila=1;
-        for(const oferta of ofertas){
-            const fecha_inicio = new Date(oferta?.fecha_inicio_oferta);
+    const _formarFilasOfertas = () => {
+        const n_filas = [];
+        let n_fila = 1;
+      
+        for (const oferta of ofertas) {
+              const fecha_inicio = new Date(oferta?.fecha_inicio_oferta);
             const fecha_finalizacion = new Date(oferta?.fecha_finalizacion_oferta);
             const operaciones=<Fragment>
                 <ButtonToggle 
@@ -246,21 +247,28 @@ export const OfertasAplicaciones = () => {
                     <i className="mdi mdi-check-outline"></i>
                 </ButtonToggle>
             </Fragment>
-            n_filas.push({
-                numero_fila: n_fila,
+
+          n_filas.push({
+            numero_fila: n_fila,
                 nombre_empresa: oferta?.empresa_ctg?.nombre_empresa,
                 nombre_puesto: oferta?.puesto_ctg?.puesto,
                 n_estado_oferta: oferta?.estado_oferta?.estado_oferta,
                 fecha_inicio: fecha_inicio.getDate()+"-"+fecha_inicio.getMonth()+"-"+fecha_inicio.getFullYear(),
                 fecha_finalizacion: fecha_finalizacion.getDate()+"-"+fecha_finalizacion.getMonth()+"-"+fecha_finalizacion.getFullYear(),
                 operaciones
-            });
-
-            n_fila++;
+          });
+      
+          n_fila++;
         }
-
-        setOfertas_filas(n_filas);
-    }
+      
+        // Filtrar ofertas por el término de búsqueda
+        const ofertasFiltradas = n_filas.filter((oferta) =>
+          oferta.nombre_puesto.toLowerCase().includes(searchTerm.toLowerCase())||
+          oferta.nombre_empresa.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+      
+        setOfertas_filas(ofertasFiltradas);
+      };
 
     const _formarFilasAplicaciones=()=>{
         const n_filas=[];
@@ -332,8 +340,14 @@ export const OfertasAplicaciones = () => {
                             Ofertas de Empleo
                         </h3>
                     </CardTitle>
-
-                    <Row>
+                    <Input
+                    type="text"
+                    placeholder="Buscar..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    />  
+                    <br/> 
+                    <Row>     
                         <Col>
                             <div>
                                 <Nav tabs className="nav-tabs-custom nav-justified">
