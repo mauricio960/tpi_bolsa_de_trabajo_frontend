@@ -52,11 +52,11 @@ const Login = (props) => {
     enableReinitialize: true,
 
     initialValues: {
-      email: "admin@themesbrand.com" || "",
+      email: "carnet@ues.edu.sv" || "",
       password: "123456" || "",
     },
     validationSchema: Yup.object({
-      email: Yup.string().required("Por favor ingrese el correo electrónico"),
+      email: Yup.string().required("Por favor ingrese su correo electrónico"),
       password: Yup.string().min(8,'Mínimo 8 caracteres').required("Por favor ingrese su contraseña"),
     }),
     onSubmit: (values) => {
@@ -183,7 +183,7 @@ const Login = (props) => {
                       {/* {error ? <Alert color="danger">{error}</Alert> : null} */}
 
                       <div className="mb-3">
-                        <Label className="form-label">Email</Label>
+                        <Label className="form-label">Correo Electrónico</Label>
                         <Input
                           name="email"
                           className="form-control"
@@ -206,7 +206,7 @@ const Login = (props) => {
                       </div>
 
                       <div className="mb-3">
-                        <Label className="form-label">Password</Label>
+                        <Label className="form-label">Contraseña</Label>
                         <Input
                           name="password"
                           autoComplete="off"
@@ -256,7 +256,7 @@ const Login = (props) => {
               </Card>
               <div className="mt-5 text-center">
                 <p>
-                  No te has registrado ?{" "}
+                  ¿No te has registrado? {" "}
                   <Link to="/register" className="fw-medium text-primary">
                     {" "}
                     Registrate ahora{" "}

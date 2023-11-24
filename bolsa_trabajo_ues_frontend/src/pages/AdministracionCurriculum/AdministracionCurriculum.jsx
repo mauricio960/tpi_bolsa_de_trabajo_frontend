@@ -298,7 +298,7 @@ export const AdministracionCurriculum = () => {
                 Swal.fire({
                     title:"Orden de fechas erroneo",
                     icon:"error",
-                    text:"La fecha de finalización debe ser mayor a la fecha de inicion.",
+                    text:"La fecha de finalización debe ser mayor a la fecha de inicio.",
                     confirmButtonText:"Aceptar"
                 })
                 return;
@@ -365,7 +365,7 @@ export const AdministracionCurriculum = () => {
                 Swal.fire({
                     title:"Orden de fechas erroneo",
                     icon:"error",
-                    text:"La fecha de finalización debe ser mayor a la fecha de inicion.",
+                    text:"La fecha de finalización debe ser mayor a la fecha de inicio.",
                     confirmButtonText:"Aceptar"
                 })
                 return;
@@ -773,7 +773,7 @@ export const AdministracionCurriculum = () => {
                                 </Row>
                                 <Row>
                                     <Col>
-                                        <Label className="form-label">Descripción</Label>
+                                        <Label className="form-label">Perfil Profesional</Label>
                                         <Input 
                                             name="descripcion_usuario"
                                             id="descripcion_usuario"

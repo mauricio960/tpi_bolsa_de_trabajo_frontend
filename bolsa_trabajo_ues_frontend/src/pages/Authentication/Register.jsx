@@ -46,8 +46,8 @@ const Register = props => {
     },
     validationSchema: Yup.object({
       carnet: Yup.string()
-      .required("El Carnét es requerido")
-      .matches(/^[A-Za-z]{2}\d{5}$/, 'El formato del carnét debe ser AA#####'),
+      .required("El Carnet es requerido")
+      .matches(/^[A-Za-z]{2}\d{5}$/, 'El formato del carnet debe ser AA#####'),
       dui: Yup.string()
       .required("El DUI es requerido")
       .matches(/^\d{8}-\d{1}$/, 'el format del DUI debe ser ########-#'),
@@ -74,11 +74,11 @@ const Register = props => {
 
 
 
-      email: Yup.string().required("Please Enter Your Email").email('Debe ser una dirección de correo electrónico válida.'),
+      email: Yup.string().required("El Email es requerido").email('Debe ser una dirección de correo electrónico válida.'),
       // username: Yup.string().required("Please Enter Your Username"),
       password:Yup.string()
       .min(8,'La contraseña debe de tener mínimo 8 caracteres')
-      .required("Contraseña es requerido")
+      .required("La Contraseña es requerida")
       .matches(/[a-z]/, 'debe llevar al menos un caracter en minúscula')
       .matches(/[A-Z]/, 'debe llevar al menos un carater en mayúscula')
       .matches(/[a-zA-Z]+[^a-zA-Z\s]+/, 'debe llevar al menos un número o un caracter especial. (@,!,#, etc).'),
@@ -143,7 +143,7 @@ const Register = props => {
                   <Row>
                     <Col className="col-7">
                       <div className="text-primary p-4">
-                        <h5 className="text-primary">Free Register</h5>
+                        <h5 className="text-primary">Registro</h5>
                         <p>Registrate en nuestra bolsa de trabajo ahora.</p>
                       </div>
                     </Col>
@@ -191,12 +191,12 @@ const Register = props => {
                       </div>
 
                       <div className="mb-3">
-                        <Label className="form-label">Carnét</Label>
+                        <Label className="form-label">Carnet</Label>
                         <Input
                           id="carnet"
                           name="carnet"
                           className="form-control"
-                          placeholder="Ingrese su carnét"
+                          placeholder="Ingrese su carnet"
                           type="text"
                           onChange={validation.handleChange}
                           onBlur={validation.handleBlur}
@@ -236,7 +236,7 @@ const Register = props => {
                           id="primer_nombre"
                           name="primer_nombre"
                           className="form-control"
-                          placeholder="Ingrese el primer nombre"
+                          placeholder="Ingrese su primer nombre"
                           type="text"
                           onChange={validation.handleChange}
                           onBlur={validation.handleBlur}
@@ -256,7 +256,7 @@ const Register = props => {
                           id="segundo_nombre"
                           name="segundo_nombre"
                           className="form-control"
-                          placeholder="Ingrese el segundo nombre"
+                          placeholder="Ingrese su segundo nombre"
                           type="text"
                           onChange={validation.handleChange}
                           onBlur={validation.handleBlur}
@@ -276,7 +276,7 @@ const Register = props => {
                           id="primer_apellido"
                           name="primer_apellido"
                           className="form-control"
-                          placeholder="Ingrese el primer apellido"
+                          placeholder="Ingrese su primer apellido"
                           type="text"
                           onChange={validation.handleChange}
                           onBlur={validation.handleBlur}
@@ -296,7 +296,7 @@ const Register = props => {
                           id="segundo_apellido"
                           name="segundo_apellido"
                           className="form-control"
-                          placeholder="Ingrese el segundo apellido"
+                          placeholder="Ingrese su segundo apellido"
                           type="text"
                           onChange={validation.handleChange}
                           onBlur={validation.handleBlur}
@@ -319,8 +319,7 @@ const Register = props => {
                               maxDate={new Date()}
                               onChange={(date)=>{
                                   validation.setFieldValue("fecha_nacimiento", date);
-                              }}
-                             
+                              }}            
                               dateFormat="dd-MM-yyyy"
                               locale="es"
                           />
@@ -379,7 +378,7 @@ const Register = props => {
                         <Input
                           name="password"
                           type="password"
-                          placeholder="Enter Password"
+                          placeholder="Ingrese una Contraseña"
                           onChange={validation.handleChange}
                           onBlur={validation.handleBlur}
                           value={validation.values.password || ""}
@@ -460,7 +459,7 @@ const Register = props => {
               </Card>
               <div className="mt-5 text-center">
                 <p>
-                  Ya tienes una cuenta ?{" "}
+                  ¿Ya tienes una cuenta?{" "}
                   <Link to="/login" className="font-weight-medium text-primary">
                     {" "}
                     Inicia Sesión

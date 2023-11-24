@@ -18,7 +18,7 @@ import Swal from 'sweetalert2';
 import './css/styles.css'
 
 export const OfertasAplicaciones = () => {
-    document.title="Ofertas de Empleo -  Blosa de trabajo."
+    document.title="Ofertas de Empleo -  Bolsa de trabajo."
 
     const [activeTab, setActiveTab] = useState("1");
     const [loadingOfertas, setLoadingOfertas] = useState(false);
