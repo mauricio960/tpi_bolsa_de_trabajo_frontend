@@ -40,6 +40,7 @@ const Sidebar = (props) => {
     <React.Fragment>
       <div className="vertical-menu">
         <div className="navbar-brand-box">
+        <br/>
           <Link to={rutaPrincipal} className="logo logo-dark">
             <span className="logo-sm">
               <img src={uesLogo} alt="" height="100" />
@@ -47,6 +48,7 @@ const Sidebar = (props) => {
             <span className="logo-lg">
               <img src={uesLogo} alt="" height="60" />
             </span>
+            <br/>
           </Link>
 
           <Link to={rutaPrincipal} className="logo logo-light">
