@@ -177,7 +177,7 @@ export const OfertasAplicaciones = () => {
         if(aplicaciones != null){
             _formarFilasAplicaciones();
         }
-    },[aplicaciones]);
+    },[aplicaciones, searchTerm]);
 
     const _toggleTab=(tab_item)=>{
         setActiveTab(tab_item);
@@ -270,9 +270,10 @@ export const OfertasAplicaciones = () => {
         setOfertas_filas(ofertasFiltradas);
       };
 
-    const _formarFilasAplicaciones=()=>{
+      const _formarFilasAplicaciones=()=>{
         const n_filas=[];
         let numero_fila = 1;
+
         for(const iterador of aplicaciones){
             n_filas.push({
                 numero_fila,
@@ -280,10 +281,19 @@ export const OfertasAplicaciones = () => {
                 nombre_puesto: iterador?.oferta?.puesto_ctg?.puesto,
                 estado_aplicacion: iterador?.estado_aplicacion_oferta?.estado_aplicacion_oferta
             });
-        }
+          numero_fila++;
 
-        setFilasAplicaciones(n_filas);
+        }
+// Filtrar ofertas por el término de búsqueda
+        const aplicacionesFiltradas = n_filas.filter((iterador) =>
+          iterador.nombre_empresa.toLowerCase().includes(searchTerm.toLowerCase())||
+          iterador.nombre_puesto.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+      
+
+        setFilasAplicaciones(aplicacionesFiltradas);
     }
+
 
     const _aplicarOferta=async()=>{
         try{
@@ -340,12 +350,15 @@ export const OfertasAplicaciones = () => {
                             Ofertas de Empleo
                         </h3>
                     </CardTitle>
+                    <div className="buscador">
+                    <i className="mdi mdi-magnify icono-lupa"></i>
                     <Input
-                    type="text"
-                    placeholder="Buscar..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    />  
+                        type="text"
+                        placeholder="Buscar..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                    </div>
                     <br/> 
                     <Row>     
                         <Col>
