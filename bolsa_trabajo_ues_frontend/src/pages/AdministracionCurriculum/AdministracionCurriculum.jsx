@@ -683,7 +683,7 @@ export const AdministracionCurriculum = () => {
                                             type="text"
                                             value={validation.values.primer_nombre || ""}
                                             readOnly={true}
-
+                                            disabled={true}
                                         />
                                     </Col>
                                     <Col>
@@ -695,7 +695,7 @@ export const AdministracionCurriculum = () => {
                                             type="text"
                                             value={validation.values.segundo_nombre || ""}
                                             readOnly={true}
-
+                                            disabled={true}
                                         />
                                     </Col>
                                 </Row>
@@ -709,7 +709,7 @@ export const AdministracionCurriculum = () => {
                                             type="text"
                                             value={validation.values.primer_apellido || ""}
                                             readOnly={true}
-
+                                            disabled={true}
                                         />
                                     </Col>
                                     <Col>
@@ -721,7 +721,7 @@ export const AdministracionCurriculum = () => {
                                             type="text"
                                             value={validation.values.segundo_apellido || ""}
                                             readOnly={true}
-
+                                            disabled={true}
                                         />
                                     </Col>
                                 </Row>
@@ -735,7 +735,7 @@ export const AdministracionCurriculum = () => {
                                             type="text"
                                             value={validation.values.dui || ""}
                                             readOnly={true}
-
+                                            disabled={true}
                                         />
                                     </Col>
                                     <Col>
@@ -747,7 +747,7 @@ export const AdministracionCurriculum = () => {
                                             type="text"
                                             value={validation.values.correo_electronico || ""}
                                             readOnly={true}
-
+                                            disabled={true}
                                         />
                                     </Col>
                                 </Row>
