@@ -188,7 +188,7 @@ const authProtectedRoutes = [
   // { path:"/representante_mto", component:<RepresentanteMto />},
   //   // this route should be at the end of all other routes
   //   // eslint-disable-next-line react/display-name
-  { path: "/", exact: true, component: <Navigate to="/dashboard" /> },
+  { path: "/", exact: true, component: <Navigate to="/login" /> },
 ];
 
 const publicRoutes = [
